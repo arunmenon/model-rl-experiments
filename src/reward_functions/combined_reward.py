@@ -1,4 +1,5 @@
 # src/reward_functions/combined_reward.py
+
 from .semantic_similarity import reward_semantic_similarity
 from .seo_keywords import reward_seo_keywords
 from .grammar_fluency import reward_grammar_fluency
@@ -8,14 +9,14 @@ from .length_optimization import reward_length
 def compute_total_reward(
     generated_title: str,
     reference_title: str = None,
-    category_keywords: list[str] = None,
-    product_info: dict = None,
-    weights: dict = None
+    category_keywords=None,
+    product_info=None,
+    weights=None
 ) -> float:
     """
-    Aggregates all sub-reward components into a final score in [0,1].
+    Combined reward aggregator for product title enhancement.
+    Returns a final score in [0,1].
     """
-    # Default weights
     default_weights = {
         'semantic': 0.25,
         'seo': 0.15,
@@ -23,29 +24,25 @@ def compute_total_reward(
         'structure': 0.25,
         'length': 0.15
     }
-    if not weights:
+    if weights is None:
         weights = default_weights
 
-    # Fallbacks
     if category_keywords is None:
         category_keywords = []
     if product_info is None:
         product_info = {}
 
-    # Compute sub-rewards
     r_sem = reward_semantic_similarity(generated_title, reference_title)
     r_seo = reward_seo_keywords(generated_title, category_keywords)
     r_gram = reward_grammar_fluency(generated_title)
     r_struct = reward_title_structure(generated_title, product_info)
     r_len = reward_length(generated_title)
 
-    # Weighted sum
-    total = (weights['semantic'] * r_sem +
-             weights['seo'] * r_seo +
-             weights['grammar'] * r_gram +
-             weights['structure'] * r_struct +
-             weights['length'] * r_len)
-
-    # Bound final in [0,1], or allow it to exceed 1.0 if you want
-    total = max(0.0, min(1.0, total))
-    return total
+    total = (
+        weights['semantic'] * r_sem +
+        weights['seo'] * r_seo +
+        weights['grammar'] * r_gram +
+        weights['structure'] * r_struct +
+        weights['length'] * r_len
+    )
+    return max(0.0, min(1.0, total))

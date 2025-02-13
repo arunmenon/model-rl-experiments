@@ -6,13 +6,13 @@ class TrainingConfig:
         dataset_path="data/example_dataset.csv",
         output_dir="output",
         num_train_steps=1000,
-        # more hyperparams...
+        batch_size=2,
         remove_unused_columns=False,
-        # etc.
+        # add other hyperparams as needed
     ):
         self.model_name = model_name
         self.dataset_path = dataset_path
         self.output_dir = output_dir
         self.num_train_steps = num_train_steps
+        self.batch_size = batch_size
         self.remove_unused_columns = remove_unused_columns
-        # ...
