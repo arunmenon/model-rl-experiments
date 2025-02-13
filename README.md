@@ -26,7 +26,7 @@ This project demonstrates how to use **Group Relative Policy Optimization (GRPO)
 
 ## **Overview**
 
-Many online platforms struggle with **concise yet informative** product titles that attract customers and adhere to platform guidelines. This repository uses **Reinforcement Learning** (RL) to automatically generate enriched product titles from minimal inputs (like original titles, brand info, etc.). The **RL agent** learns to maximize a **custom reward** that measures key aspects of a “good” title:
+This repository uses **Reinforcement Learning** (RL) techniques for title model fine-tuning. The **RL agent** learns to maximize a **custom reward** that measures key aspects of a “good” title:
 
 1. **Maintaining Semantic Meaning** (so the title accurately reflects the product).  
 2. **Including SEO Keywords** (to optimize search performance).  
