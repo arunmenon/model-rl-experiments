@@ -1,10 +1,6 @@
-Below is a **comprehensive `README.md`** for your repository. It explains how the combined reward framework works, details each individual reward function, and provides context on how they fit together in the **GRPO** (Group Relative Policy Optimization) approach to product title enhancement.
-
----
-
 # **Product Title Enhancement with a Custom Reward Framework**
 
-Welcome to the **Product Title Enhancement RL** repository! This project demonstrates how to use **Group Relative Policy Optimization (GRPO)** (or a PPO-like reinforcement learning approach) to improve e-commerce product titles automatically, guided by a **custom multi-component reward function**.
+This project demonstrates how to use **Group Relative Policy Optimization (GRPO)** (or a PPO-like reinforcement learning approach) to improve product titles automatically, guided by a **custom multi-component reward function**.
 
 ## **Table of Contents**
 
@@ -232,16 +228,9 @@ The **best** completion’s strategy is then reinforced. Over time, the model co
 
 ## **Next Steps**
 
-- **Refine RL Logic**: 
-  - The included code is a skeleton. For real GRPO or PPO, incorporate advantage calculation, gradient updates, and stable policy optimization. 
 - **Tune Weights**: 
   - Adjust the sub-reward weights in `combined_reward.py` to emphasize certain criteria (e.g., more weight on grammar if you see frequent mistakes). 
 - **Add More Metrics**: 
   - For instance, brand correctness vs. brand guess, or advanced readability checks. 
-- **Scale Up**: 
-  - Switch from small GPT-2 to bigger LLM (e.g., LLaMA/Qwen). 
-- **Deploy**: 
-  - Once validated, integrate into your product listing flow to auto-generate improved titles.
-
 ---
 
